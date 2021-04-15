@@ -689,8 +689,8 @@ extern "C" {
    * @return     Cubic curve above 0.42264973081, gain: 1.2383127573
    */
   __fast_inline float osc_sat_cubicf(float x) {
-    const float xf = si_fabsf(clip1f(x)) * k_cubicsat_size;
-    const uint32_t xi = (uint32_t)x;
+    const float xf = clip1f(si_fabsf(x)) * k_cubicsat_size;
+    const uint32_t xi = (uint32_t)xf;
     const float y0 = cubicsat_lut_f[xi];
     const float y1 = cubicsat_lut_f[xi+1];
     return si_copysignf(linintf(xf - xi, y0, y1), x);
@@ -710,8 +710,8 @@ extern "C" {
    * @return     Saturated value.
    */
   __fast_inline float osc_sat_schetzenf(float x) {
-    const float xf = si_fabsf(clip1f(x)) * k_schetzen_size;
-    const uint32_t xi = (uint32_t)x;
+    const float xf = clip1f(si_fabsf(x)) * k_schetzen_size;
+    const uint32_t xi = (uint32_t)xf;
     const float y0 = schetzen_lut_f[xi];
     const float y1 = schetzen_lut_f[xi+1];
     return si_copysignf(linintf(xf - xi, y0, y1), x);
